@@ -1,0 +1,129 @@
+@use '@styles/variables';
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 44px;
+  padding: 12px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-input);
+  transition: box-shadow variables.$transition;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.caret {
+  flex-shrink: 0;
+  transition: transform variables.$transition;
+
+  &_open {
+    transform: rotate(180deg);
+  }
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  padding: 6px;
+  overflow: hidden;
+  border-radius: var(--radius-input);
+  box-shadow: 0 12px 32px rgb(24 19 15 / 28%);
+}
+
+.option {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  transition: background-color variables.$transition;
+}
+
+/* ---- Light tone ---- */
+.root_light {
+  .trigger {
+    color: var(--dark-main);
+    box-shadow: inset 0 0 0 1px var(--dark-200);
+
+    &_open {
+      box-shadow: inset 0 0 0 1px var(--brand-main);
+    }
+  }
+
+  .placeholder {
+    color: var(--dark-400);
+  }
+
+  .menu {
+    background: var(--white);
+    box-shadow: 0 12px 32px rgb(24 19 15 / 28%),
+      inset 0 0 0 1px var(--brand-100);
+  }
+
+  .option {
+    color: var(--dark-main);
+
+    &:hover,
+    &_active {
+      background: var(--brand-100);
+    }
+  }
+}
+
+/* ---- Dark tone (on brand panels) ---- */
+.root_dark {
+  .trigger {
+    color: var(--light-main);
+    box-shadow: inset 0 0 0 1px var(--light-200);
+
+    &_open {
+      box-shadow: inset 0 0 0 1px var(--light-main);
+    }
+  }
+
+  .placeholder {
+    color: var(--light-400);
+  }
+
+  .menu {
+    color: var(--light-main);
+    background: var(--brand-main);
+    box-shadow: 0 12px 32px rgb(24 19 15 / 40%),
+      inset 0 0 0 1px var(--light-200);
+  }
+
+  .option {
+    color: var(--light-main);
+
+    &:hover,
+    &_active {
+      background: var(--light-100);
+    }
+  }
+}

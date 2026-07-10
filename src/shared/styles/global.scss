@@ -1,0 +1,217 @@
+@import 'mixins';
+
+/* =====================================================================
+   KITCHENS 30 — global CSS variables
+   Furniture design system (walnut + terracotta on cream). Re-theme the
+   whole site by editing the raw brand/accent/neutral values below once.
+
+   Fonts are wired via next/font (see app/layout.tsx). Do NOT redefine
+   --font-inter-tight / --font-playfair variable *names* here — next/font
+   already sets them on <html>, redefining creates a circular reference.
+   ===================================================================== */
+
+:root {
+  /* stylelint-disable */
+
+  /* ---- Fonts (mapped from next/font) ---- */
+  --font-ui: var(--font-inter-tight), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-playfair), Georgia, 'Times New Roman', serif;
+
+  /* ---- Brand: Walnut — panels, headings, dark sections, strokes ---- */
+  --brand-main: rgb(64, 49, 42);
+  --brand-800: rgba(64, 49, 42, 0.8);
+  --brand-600: rgba(64, 49, 42, 0.6);
+  --brand-400: rgba(64, 49, 42, 0.4);
+  --brand-200: rgba(64, 49, 42, 0.2);
+  --brand-100: rgba(64, 49, 42, 0.1);
+
+  /* ---- Accent: Terracotta — primary CTA / accents ---- */
+  --accent-main: rgb(192, 110, 69);
+  --accent-active: rgb(168, 91, 52);
+  --accent-800: rgba(192, 110, 69, 0.8);
+  --accent-600: rgba(192, 110, 69, 0.6);
+  --accent-400: rgba(192, 110, 69, 0.4);
+  --accent-200: rgba(192, 110, 69, 0.2);
+  --accent-100: rgba(192, 110, 69, 0.1);
+
+  /* ---- Secondary: Sage — soft "natural/eco" tags, chips, badges ---- */
+  --sage-main: rgb(120, 130, 110);
+  --sage-200: rgba(120, 130, 110, 0.2);
+  --sage-100: rgba(120, 130, 110, 0.1);
+
+  /* ---- Neutrals: warm charcoal text ---- */
+  --ink: rgb(28, 22, 18);
+  --dark-main: rgb(38, 31, 26);
+  --dark-secondary: rgb(58, 49, 42);
+  --dark-800: rgba(38, 31, 26, 0.8);
+  --dark-600: rgba(38, 31, 26, 0.6);
+  --dark-400: rgba(38, 31, 26, 0.4);
+  --dark-200: rgba(38, 31, 26, 0.2);
+  --dark-100: rgba(38, 31, 26, 0.1);
+  --black: rgb(24, 19, 15);
+
+  /* ---- Neutrals: warm cream (page bg / on-dark text) ---- */
+  --light-main: rgb(245, 240, 232);
+  --light-800: rgba(245, 240, 232, 0.8);
+  --light-600: rgba(245, 240, 232, 0.6);
+  --light-400: rgba(245, 240, 232, 0.4);
+  --light-200: rgba(245, 240, 232, 0.2);
+  --light-100: rgba(245, 240, 232, 0.1);
+
+  --white: rgb(255, 255, 255);
+  --white-100: rgb(250, 247, 242); /* warm white — contact buttons, chips on dark */
+  --surface-card: rgb(237, 230, 219); /* warm sand — cards / pills on light */
+
+  /* ---- Semantic status ---- */
+  --critical: rgb(198, 40, 40);
+  --good: rgb(76, 130, 62);
+  --normal: rgb(214, 138, 40);
+
+  /* ---- Semantic aliases (use these in components; retheme in one place) ---- */
+  --bg-page: var(--light-main);
+  --bg-surface: var(--surface-card);
+  --text-primary: var(--dark-main);
+  --text-heading: var(--ink);
+  --text-muted: var(--dark-600);
+  --text-on-dark: var(--light-main);
+  --text-accent: var(--brand-main);
+  --text-cta: var(--accent-main);
+
+  /* ---- Spacing scale (x1–x10) ---- */
+  --space-x1: 4px;
+  --space-x2: 6px;
+  --space-x3: 8px;
+  --space-x4: 12px;
+  --space-x5: 16px;
+  --space-x6: 24px;
+  --space-x7: 32px;
+  --space-x8: 48px;
+  --space-x9: 64px;
+  --space-x10: 88px;
+
+  /* ---- Radii ---- */
+  --radius-input: 8px;
+  --radius-button: 12px;
+  --radius-chip: 100px;
+  --radius-card: 24px;
+  --radius-panel: 48px;
+
+  /* ---- Layout (content width; container mixin adds gutters on top) ---- */
+  --container-max: 1312px;
+  --gutter: 64px;
+  /* stylelint-enable */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-primary);
+  background: var(--bg-page);
+
+  /* `clip` (not `hidden`) so a sticky header isn't trapped in a scroll
+     container while still preventing horizontal scroll from full-bleed bands. */
+  overflow-x: clip;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity $transition, color $transition;
+
+  @include desktop-only {
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+  margin: 0;
+}
+
+button {
+  @include reset-btn;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-main);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: var(--light-main);
+  background: var(--brand-main);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+
+  main {
+    flex-grow: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

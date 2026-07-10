@@ -1,0 +1,19 @@
+// SCSS build-time variables (breakpoints + transitions).
+// Colors/spacing/radii live as CSS custom properties in global.scss so they
+// can be re-themed at runtime and read in JS.
+
+// Breakpoints: desktop ≥901 · tablet 561–900 · mobile ≤560
+$tablet: 900px;
+$mobile: 560px;
+
+// retina
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+// Transitions
+$transition-duration: 0.16s;
+$transition-timing-function: ease;
+$transition: $transition-duration $transition-timing-function;
+
+// Modal / drawer entrance
+$transition-modal: 0.28s cubic-bezier(0.22, 1, 0.36, 1);

@@ -1,0 +1,141 @@
+@use '@styles/mixins';
+@use '@styles/variables';
+
+.root {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--light-main);
+  box-shadow: 0 4px 24px rgb(38 31 26 / 8%);
+}
+
+.inner {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 20px;
+
+  @include mixins.mobile {
+    padding-block: 14px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin-inline: auto;
+
+  @include mixins.tablet {
+    display: none;
+  }
+}
+
+.link {
+  font-size: 16px;
+  color: var(--dark-main);
+  white-space: nowrap;
+  transition: color variables.$transition;
+
+  &:hover {
+    color: var(--accent-main);
+    opacity: 1;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cta {
+  @include mixins.tablet {
+    display: none;
+  }
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--brand-main);
+  cursor: pointer;
+
+  @include mixins.tablet {
+    display: inline-flex;
+  }
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  background: rgb(24 19 15 / 45%);
+  border: none;
+  backdrop-filter: blur(4px);
+  animation: scrim-in variables.$transition-duration ease;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: min(320px, 86vw);
+  height: 100svh;
+  padding: 88px 24px 24px;
+  background: var(--light-main);
+  box-shadow: -12px 0 40px rgb(24 19 15 / 20%);
+  animation: menu-in variables.$transition-modal;
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menuLink {
+  padding: 12px 0;
+  font-size: 20px;
+  color: var(--dark-main);
+  border-bottom: 1px solid var(--brand-100);
+
+  &:hover {
+    color: var(--accent-main);
+    opacity: 1;
+  }
+}
+
+.menuCta {
+  margin-top: auto;
+}
+
+@keyframes scrim-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,35 @@
+@use '@styles/mixins';
+
+.root {
+  // Hero / display — Playfair, 48 → 32 (mobile)
+  &_display {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--text-heading);
+
+    @include mixins.mobile {
+      font-size: 32px;
+    }
+  }
+
+  // Section title — 40/500 brand, stays 40 on tablet, 24 on mobile
+  &_section {
+    @include mixins.section-title;
+  }
+
+  // Sub heading — 24/600
+  &_sub {
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--dark-main);
+
+    @include mixins.mobile {
+      font-size: 20px;
+    }
+  }
+}

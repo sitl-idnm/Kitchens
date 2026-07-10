@@ -1,0 +1,92 @@
+@use '@styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 14px;
+  color: currentcolor;
+  opacity: 0.8;
+}
+
+.required {
+  margin-left: 2px;
+  color: var(--accent-main);
+}
+
+.error {
+  font-size: 13px;
+  color: var(--critical);
+}
+
+.submitError {
+  font-size: 14px;
+  color: var(--critical);
+}
+
+.file {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 44px;
+  padding: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: var(--radius-input);
+  transition: box-shadow variables.$transition;
+
+  &[data-tone='light'] {
+    color: var(--dark-600);
+    box-shadow: inset 0 0 0 1px var(--dark-200);
+  }
+
+  &[data-tone='dark'] {
+    color: var(--light-600);
+    box-shadow: inset 0 0 0 1px var(--light-200);
+  }
+
+  &[data-has-file='true'] {
+    color: var(--accent-main);
+  }
+}
+
+.fileText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.consent {
+  font-size: 13px;
+  line-height: 1.4;
+
+  a {
+    color: var(--accent-main);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  &[data-tone='light'] {
+    color: var(--dark-400);
+  }
+
+  &[data-tone='dark'] {
+    color: var(--light-400);
+  }
+}

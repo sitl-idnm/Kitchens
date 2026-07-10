@@ -1,0 +1,155 @@
+@use '@styles/mixins';
+
+.root {
+  @include mixins.section-block;
+}
+
+.receipt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 48px;
+  padding: 32px;
+  color: var(--light-main);
+  background: var(--brand-main);
+  border-radius: var(--radius-card);
+
+  @include mixins.mobile {
+    padding: 24px;
+  }
+}
+
+.receiptHead {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--light-200);
+}
+
+.receiptTitle {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.receiptTotal {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--light-600);
+}
+
+.receiptRows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.receiptRow {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--light-100);
+
+  @include mixins.tablet {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'label value'
+      'text text';
+    gap: 8px 16px;
+  }
+}
+
+.receiptLabel {
+  font-weight: 500;
+  font-size: 16px;
+
+  @include mixins.tablet {
+    grid-area: label;
+  }
+}
+
+.receiptText {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--light-600);
+
+  @include mixins.tablet {
+    grid-area: text;
+  }
+}
+
+.receiptValue {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--accent-main);
+  text-align: right;
+  white-space: nowrap;
+
+  @include mixins.tablet {
+    grid-area: value;
+  }
+}
+
+.receiptFooter {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--light-800);
+}
+
+.receiptReserve {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--accent-main);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+
+  @include mixins.tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+}
+
+.stepNumber {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--accent-main);
+}
+
+.stepTitle {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--brand-main);
+}
+
+.stepText {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--dark-600);
+}

@@ -1,0 +1,22 @@
+@use '@styles/mixins';
+
+.root {
+  @include mixins.section-block;
+  background: var(--light-main);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+
+  @include mixins.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+  }
+}

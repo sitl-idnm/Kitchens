@@ -1,0 +1,49 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+
+  &_center {
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
+.kicker {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* tone: text colors on light vs dark bands */
+.root_light {
+  .kicker {
+    color: var(--accent-main);
+  }
+
+  .description {
+    color: var(--text-muted);
+  }
+}
+
+.root_dark {
+  .kicker {
+    color: var(--accent-main);
+  }
+
+  .title {
+    color: var(--light-main);
+  }
+
+  .description {
+    color: var(--light-600);
+  }
+}

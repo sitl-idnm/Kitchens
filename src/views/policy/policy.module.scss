@@ -1,0 +1,60 @@
+@use '@styles/mixins';
+
+.root {
+  padding-block: 48px 88px;
+
+  @include mixins.mobile {
+    padding-block: 32px 56px;
+  }
+}
+
+.inner {
+  max-width: 840px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--dark-400);
+}
+
+.title {
+  @include mixins.section-title;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--dark-main);
+
+  @include mixins.mobile {
+    font-size: 16px;
+  }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--dark-600);
+}
+
+.contacts {
+  padding-top: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--brand-main);
+  border-top: 1px solid var(--brand-100);
+}

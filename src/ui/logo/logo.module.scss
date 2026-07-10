@@ -1,0 +1,20 @@
+.root {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+
+  &_brand {
+    color: var(--brand-main);
+  }
+
+  &_light {
+    color: var(--light-main);
+  }
+}
+
+.accent {
+  color: var(--accent-main);
+}

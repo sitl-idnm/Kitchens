@@ -1,0 +1,130 @@
+@use '@styles/mixins';
+@use '@styles/variables';
+
+.root {
+  color: var(--text-on-dark);
+  background: var(--brand-main);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-areas:
+    'brand nav contacts'
+    'legal legal legal';
+  gap: 48px 32px;
+  padding-block: 64px;
+
+  @include mixins.tablet {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'brand brand'
+      'nav contacts'
+      'legal legal';
+    gap: 40px 24px;
+    padding-block: 48px;
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'brand'
+      'nav'
+      'contacts'
+      'legal';
+    gap: 32px;
+    padding-block: 40px;
+  }
+}
+
+.brand {
+  grid-area: brand;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 380px;
+}
+
+.tagline {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--light-600);
+}
+
+.colTitle {
+  font-size: 14px;
+  color: var(--light-400);
+}
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navLink {
+  font-size: 16px;
+  color: var(--light-800);
+
+  &:hover {
+    color: var(--light-main);
+    opacity: 1;
+  }
+}
+
+.contacts {
+  grid-area: contacts;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactLink {
+  font-size: 16px;
+  color: var(--light-800);
+
+  &:hover {
+    color: var(--accent-main);
+    opacity: 1;
+  }
+}
+
+.address {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--light-600);
+}
+
+.legal {
+  grid-area: legal;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 32px;
+  border-top: 1px solid var(--light-200);
+}
+
+.legalLine {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--light-600);
+}
+
+.policyLink {
+  color: var(--light-800);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: var(--light-main);
+    opacity: 1;
+  }
+}
+
+.disclaimer {
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--light-400);
+}

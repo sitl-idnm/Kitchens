@@ -1,0 +1,76 @@
+@use '@styles/variables';
+
+.root {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.box {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 1px solid currentcolor;
+  border-radius: 6px;
+  transition: background-color variables.$transition;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    width: 6px;
+    height: 11px;
+    border: solid currentcolor;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
+
+.label {
+  font-size: 14px;
+  line-height: 1.4;
+
+  a {
+    color: var(--accent-main);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.input:checked + .box::after {
+  opacity: 1;
+}
+
+.input:focus-visible + .box {
+  outline: 2px solid var(--accent-main);
+  outline-offset: 2px;
+}
+
+// tone controls the box + tick color (currentColor)
+.root_light {
+  color: var(--brand-main);
+
+  .label {
+    color: var(--dark-600);
+  }
+}
+
+.root_dark {
+  color: var(--text-on-dark);
+
+  .label {
+    color: var(--light-600);
+  }
+}

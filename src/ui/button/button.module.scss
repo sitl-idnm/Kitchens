@@ -1,0 +1,85 @@
+@use '@styles/mixins';
+@use '@styles/variables';
+
+.root {
+  @include mixins.reset-btn;
+
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 16px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+  white-space: nowrap;
+  user-select: none;
+  border-radius: var(--radius-button);
+  transition: background-color variables.$transition,
+    color variables.$transition, box-shadow variables.$transition,
+    opacity variables.$transition;
+
+  // never let a label squeeze an icon to 0 width
+  svg {
+    flex-shrink: 0;
+  }
+
+  @include mixins.mobile {
+    font-size: 16px;
+  }
+
+  // --- Primary (terracotta) ---
+  &_primary {
+    color: var(--light-main);
+    background-color: var(--accent-main);
+
+    @include mixins.desktop-only {
+      &:hover {
+        background-color: var(--accent-800);
+      }
+    }
+
+    &:active {
+      background-color: var(--accent-active);
+    }
+  }
+
+  // --- Outline (on light) — keeps the 1px accent border ---
+  &_outline {
+    color: var(--accent-main);
+    background-color: var(--light-main);
+    box-shadow: inset 0 0 0 1px var(--accent-main);
+
+    @include mixins.desktop-only {
+      &:hover {
+        background-color: var(--white);
+      }
+    }
+
+    &:active {
+      background-color: var(--accent-100);
+    }
+  }
+
+  // --- Ghost-dark (on brand bands) ---
+  &_ghost-dark {
+    color: var(--accent-main);
+    background-color: var(--white-100);
+
+    @include mixins.desktop-only {
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+  }
+
+  &_block {
+    width: 100%;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
