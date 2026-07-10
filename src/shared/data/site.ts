@@ -32,9 +32,9 @@ export const company = {
     placeholder: false
   },
   email: {
-    display: 'hello@example.ru',
-    href: 'mailto:hello@example.ru',
-    placeholder: true
+    display: 'kitchens30@kim.agency',
+    href: 'mailto:kitchens30@kim.agency',
+    placeholder: false
   },
   telegram: {
     display: '@username',
