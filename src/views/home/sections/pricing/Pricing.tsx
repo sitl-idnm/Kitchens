@@ -1,3 +1,4 @@
+import { nbsp } from '@/shared/lib/typography'
 import { Container } from '@/ui'
 import { SectionHead } from '@components/index'
 import {
@@ -47,7 +48,7 @@ const Pricing = () => {
                 </span>
                 <div className={styles.body}>
                   <h3 className={styles.title}>{point.title}</h3>
-                  <p className={styles.text}>{point.text}</p>
+                  <p className={styles.text}>{nbsp(point.text)}</p>
                 </div>
               </article>
             )

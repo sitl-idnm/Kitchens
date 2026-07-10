@@ -1,3 +1,4 @@
+import { nbsp } from '@/shared/lib/typography'
 import { Container } from '@/ui'
 import { SectionHead } from '@components/index'
 import { Factory, Package, ShieldCheck } from '@phosphor-icons/react/dist/ssr'
@@ -43,7 +44,7 @@ const Sura = () => {
                   <Icon size={26} weight="bold" />
                 </span>
                 <h3 className={styles.title}>{point.title}</h3>
-                <p className={styles.text}>{point.text}</p>
+                <p className={styles.text}>{nbsp(point.text)}</p>
               </article>
             )
           })}

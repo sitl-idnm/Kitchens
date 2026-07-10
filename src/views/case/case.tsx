@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CASE_COMMON, type CaseStudy } from '@/shared/data/cases'
+import { nbsp } from '@/shared/lib/typography'
 import { Container } from '@/ui'
 import { LeadButton } from '@components/index'
 import {
@@ -71,7 +72,7 @@ const CaseView = ({ data }: CaseViewProps) => {
           <div className={styles.intro}>
             <span className={styles.kicker}>{data.kicker}</span>
             <h1 className={styles.title}>{data.caseTitle}</h1>
-            <p className={styles.story}>{data.clientStory}</p>
+            <p className={styles.story}>{nbsp(data.clientStory)}</p>
 
             <div className={styles.numbers}>
               <div className={styles.number}>
@@ -93,7 +94,9 @@ const CaseView = ({ data }: CaseViewProps) => {
                 <span className={styles.numberSaving}>{data.saving}</span>
               </div>
             </div>
-            <p className={styles.numbersNote}>{CASE_COMMON.numbersNote}</p>
+            <p className={styles.numbersNote}>
+              {nbsp(CASE_COMMON.numbersNote)}
+            </p>
 
             <div className={styles.actions}>
               <LeadButton mode="audit" source={`case:${data.slug}`}>
@@ -202,7 +205,7 @@ const CaseView = ({ data }: CaseViewProps) => {
               </h2>
               <ul className={styles.columnList}>
                 {column.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>{nbsp(item)}</li>
                 ))}
               </ul>
             </div>
@@ -215,15 +218,17 @@ const CaseView = ({ data }: CaseViewProps) => {
             <h2 className={styles.importantTitle}>
               {CASE_COMMON.important.title}
             </h2>
-            <p className={styles.importantText}>{data.thanks}</p>
-            <p className={styles.importantNote}>{CASE_COMMON.important.note}</p>
+            <p className={styles.importantText}>{nbsp(data.thanks)}</p>
+            <p className={styles.importantNote}>
+              {nbsp(CASE_COMMON.important.note)}
+            </p>
           </div>
         </div>
 
         <div className={styles.cta}>
           <span className={styles.ctaKicker}>{CASE_COMMON.cta.kicker}</span>
           <h2 className={styles.ctaTitle}>{CASE_COMMON.cta.title}</h2>
-          <p className={styles.ctaText}>{CASE_COMMON.cta.text}</p>
+          <p className={styles.ctaText}>{nbsp(CASE_COMMON.cta.text)}</p>
           <div className={styles.actions}>
             <LeadButton mode="audit" source={`case-cta:${data.slug}`}>
               Проверить смету

@@ -1,27 +1,40 @@
 'use client'
 
 import { useState } from 'react'
+import { company } from '@/shared/data/site'
 import { Container } from '@/ui'
 import { LeadForm } from '@components/lead-form'
 import { SectionHead } from '@components/section-head'
 import { SuccessScreen } from '@components/success-screen'
-import { company } from '@/shared/data/site'
 import {
   Clock,
   EnvelopeSimple,
   MapPin,
   Phone,
-  TelegramLogo,
-  WhatsappLogo
+  TelegramLogo
 } from '@phosphor-icons/react'
 
 import styles from './Contacts.module.scss'
 
 const contactItems = [
-  { icon: Phone, label: 'Телефон', value: company.phone.display, href: company.phone.href },
-  { icon: EnvelopeSimple, label: 'E-mail', value: company.email.display, href: company.email.href },
-  { icon: TelegramLogo, label: 'Telegram', value: company.telegram.display, href: company.telegram.href },
-  { icon: WhatsappLogo, label: 'WhatsApp', value: company.whatsapp.display, href: company.whatsapp.href },
+  {
+    icon: Phone,
+    label: 'Телефон',
+    value: company.phone.display,
+    href: company.phone.href
+  },
+  {
+    icon: EnvelopeSimple,
+    label: 'E-mail',
+    value: company.email.display,
+    href: company.email.href
+  },
+  {
+    icon: TelegramLogo,
+    label: 'Telegram',
+    value: company.telegram.display,
+    href: company.telegram.href
+  },
   { icon: MapPin, label: 'Адрес шоурума', value: company.address.display },
   { icon: Clock, label: 'Часы работы', value: company.schedule.display }
 ]
@@ -30,7 +43,11 @@ const Contacts = () => {
   const [done, setDone] = useState(false)
 
   return (
-    <section id="contacts" className={styles.root} aria-labelledby="contacts-title">
+    <section
+      id="contacts"
+      className={styles.root}
+      aria-labelledby="contacts-title"
+    >
       <Container className={styles.inner}>
         <div className={styles.left}>
           <SectionHead

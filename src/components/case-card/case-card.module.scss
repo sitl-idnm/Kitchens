@@ -7,11 +7,10 @@
   background: var(--white);
   border-radius: var(--radius-card);
   box-shadow: inset 0 0 0 1px var(--brand-100);
-  transition: transform variables.$transition, box-shadow variables.$transition;
+  transition: transform 0.25s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgb(38 31 26 / 14%);
+    transform: translateY(-6px);
   }
 }
 

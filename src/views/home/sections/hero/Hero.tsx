@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { nbsp } from '@/shared/lib/typography'
 import { Chip, Container } from '@/ui'
 import { openLeadAtom } from '@atoms/leadAtom'
 import { ArrowRight, SealCheck, Sparkle } from '@phosphor-icons/react'
@@ -66,9 +67,9 @@ const Hero = () => {
           </h1>
 
           <p className={styles.subtitle}>
-            Пришлите смету из салона или просто размеры стены. Разберём проект
-            по составу — фасады, модули, фурнитура, доставка, сборка — и честно
-            скажем, где цену можно снизить, а где не стоит.
+            {nbsp(
+              'Пришлите смету из салона или просто размеры стены. Разберём проект по составу — фасады, модули, фурнитура, доставка, сборка — и честно скажем, где цену можно снизить, а где не стоит.'
+            )}
           </p>
 
           <dl className={styles.proof}>
@@ -88,7 +89,7 @@ const Hero = () => {
                   weight="fill"
                   className={styles.trustIcon}
                 />
-                {item}
+                {nbsp(item)}
               </li>
             ))}
           </ul>
@@ -107,13 +108,17 @@ const Hero = () => {
                   <span className={styles.scenarioTitle}>{scenario.title}</span>
                   <ArrowRight size={20} weight="bold" />
                 </span>
-                <span className={styles.scenarioDesc}>{scenario.desc}</span>
+                <span className={styles.scenarioDesc}>
+                  {nbsp(scenario.desc)}
+                </span>
               </button>
             ))}
           </div>
 
           <p className={styles.note}>
-            Можно начать со сметы, фото кухни или просто с размеров стены.
+            {nbsp(
+              'Можно начать со сметы, фото кухни или просто с размеров стены.'
+            )}
           </p>
         </div>
 

@@ -1,4 +1,5 @@
 import { novelties, type NoveltyIcon } from '@/shared/data/novelties'
+import { nbsp } from '@/shared/lib/typography'
 import { Container } from '@/ui'
 import { SectionHead } from '@components/index'
 import {
@@ -39,7 +40,7 @@ const Novelties = () => {
                   <Icon size={26} weight="bold" />
                 </span>
                 <h3 className={styles.title}>{item.title}</h3>
-                <p className={styles.text}>{item.text}</p>
+                <p className={styles.text}>{nbsp(item.text)}</p>
               </article>
             )
           })}

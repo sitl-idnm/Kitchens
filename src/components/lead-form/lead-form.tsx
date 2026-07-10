@@ -150,7 +150,7 @@ const LeadForm = ({
           options={channelOptions}
           value={channel}
           onChange={(value) => setChannel(value as LeadChannel)}
-          placeholder="Telegram / WhatsApp / Звонок"
+          placeholder="Telegram / Звонок"
           tone={tone}
           aria-label="Удобный канал связи"
         />

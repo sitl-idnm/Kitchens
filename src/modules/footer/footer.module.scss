@@ -8,10 +8,10 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 1.5fr 0.8fr 1.1fr 200px;
+  grid-template-columns: 1.4fr 0.8fr 400px;
   grid-template-areas:
-    'brand nav contacts map'
-    'legal legal legal legal';
+    'brand nav aside'
+    'legal legal legal';
   gap: 40px 32px;
   padding-block: 64px;
 
@@ -19,8 +19,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       'brand brand'
-      'nav contacts'
-      'map map'
+      'nav aside'
       'legal legal';
     gap: 40px 24px;
     padding-block: 48px;
@@ -31,8 +30,7 @@
     grid-template-areas:
       'brand'
       'nav'
-      'contacts'
-      'map'
+      'aside'
       'legal';
     gap: 32px;
     padding-block: 40px;
@@ -75,8 +73,14 @@
   }
 }
 
+.aside {
+  grid-area: aside;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .contacts {
-  grid-area: contacts;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -99,19 +103,26 @@
 }
 
 .map {
-  grid-area: map;
-  align-self: start;
   width: 100%;
-  max-width: 200px;
+  max-width: 400px;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: var(--radius-card);
   box-shadow: inset 0 0 0 1px var(--light-200);
 
   iframe {
     display: block;
     width: 100%;
-    height: 180px;
+    height: 360px;
     border: 0;
+  }
+
+  // full width on mobile
+  @include mixins.mobile {
+    max-width: none;
+
+    iframe {
+      height: 320px;
+    }
   }
 }
 

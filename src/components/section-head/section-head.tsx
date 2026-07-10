@@ -1,8 +1,12 @@
 import { ReactNode } from 'react'
+import { nbsp } from '@/shared/lib/typography'
 import { Heading } from '@/ui'
 import classNames from 'classnames'
 
 import styles from './section-head.module.scss'
+
+const withNbsp = (node: ReactNode): ReactNode =>
+  typeof node === 'string' ? nbsp(node) : node
 
 interface SectionHeadProps {
   kicker: string
@@ -35,9 +39,11 @@ const SectionHead = ({
     >
       <span className={styles.kicker}>{kicker}</span>
       <Heading id={headingId} className={styles.title}>
-        {title}
+        {withNbsp(title)}
       </Heading>
-      {description && <p className={styles.description}>{description}</p>}
+      {description && (
+        <p className={styles.description}>{withNbsp(description)}</p>
+      )}
     </div>
   )
 }

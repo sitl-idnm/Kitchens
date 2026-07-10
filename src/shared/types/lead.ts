@@ -3,7 +3,7 @@
 
 export type LeadMode = 'audit' | 'new' | 'contact'
 
-export type LeadChannel = 'telegram' | 'whatsapp' | 'call'
+export type LeadChannel = 'telegram' | 'call'
 
 export interface LeadPayload {
   mode: LeadMode

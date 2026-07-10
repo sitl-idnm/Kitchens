@@ -1,3 +1,4 @@
+import { nbsp } from '@/shared/lib/typography'
 import { Container } from '@/ui'
 import { SectionHead } from '@components/index'
 import { Receipt } from '@phosphor-icons/react/dist/ssr'
@@ -69,7 +70,7 @@ const Process = () => {
             {overpay.map((row) => (
               <li key={row.label} className={styles.receiptRow}>
                 <span className={styles.receiptLabel}>{row.label}</span>
-                <span className={styles.receiptText}>{row.text}</span>
+                <span className={styles.receiptText}>{nbsp(row.text)}</span>
                 <span className={styles.receiptValue}>{row.value}</span>
               </li>
             ))}
@@ -88,7 +89,7 @@ const Process = () => {
                 {String(index + 1).padStart(2, '0')}
               </span>
               <span className={styles.stepTitle}>{step.title}</span>
-              <span className={styles.stepText}>{step.text}</span>
+              <span className={styles.stepText}>{nbsp(step.text)}</span>
             </li>
           ))}
         </ol>

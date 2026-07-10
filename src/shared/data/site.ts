@@ -20,7 +20,6 @@ export type ContactChannel =
   | 'phone'
   | 'email'
   | 'telegram'
-  | 'whatsapp'
   | 'address'
   | 'schedule'
 
@@ -39,11 +38,6 @@ export const company = {
   telegram: {
     display: '@username',
     href: 'https://t.me/username',
-    placeholder: true
-  },
-  whatsapp: {
-    display: 'WhatsApp',
-    href: 'https://wa.me/70000000000',
     placeholder: true
   },
   address: {
@@ -71,6 +65,5 @@ export const nav = [
 
 export const CONTACT_CHANNELS = [
   { value: 'telegram', label: 'Telegram' },
-  { value: 'whatsapp', label: 'WhatsApp' },
   { value: 'call', label: 'Звонок' }
 ] as const

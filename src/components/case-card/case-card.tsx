@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { CaseStudy } from '@/shared/data/cases'
+import { nbsp } from '@/shared/lib/typography'
 import { Button } from '@/ui'
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
-import type { CaseStudy } from '@/shared/data/cases'
 
 import styles from './case-card.module.scss'
 
@@ -34,10 +35,10 @@ const CaseCard = ({ data, priority }: CaseCardProps) => {
       <div className={styles.body}>
         <h3 className={styles.title}>
           <Link href={href} className={styles.titleLink}>
-            {data.title}
+            {nbsp(data.title)}
           </Link>
         </h3>
-        <p className={styles.text}>{data.text}</p>
+        <p className={styles.text}>{nbsp(data.text)}</p>
 
         <dl className={styles.metrics}>
           <div className={styles.metric}>

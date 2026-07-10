@@ -9,7 +9,6 @@ const MODE_LABELS: Record<string, string> = {
 
 const CHANNEL_LABELS: Record<string, string> = {
   telegram: 'Telegram',
-  whatsapp: 'WhatsApp',
   call: 'Звонок'
 }
 
