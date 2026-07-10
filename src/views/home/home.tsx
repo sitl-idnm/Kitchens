@@ -4,6 +4,7 @@ import { Hero } from './sections/hero'
 import { Novelties } from './sections/novelties'
 import { Pricing } from './sections/pricing'
 import { Process } from './sections/process'
+import { Reviews } from './sections/reviews'
 import { Sura } from './sections/sura'
 
 const HomeView = () => {
@@ -15,6 +16,7 @@ const HomeView = () => {
       <Novelties />
       <Sura />
       <Pricing />
+      <Reviews />
       <Contacts />
     </main>
   )

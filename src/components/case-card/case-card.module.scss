@@ -10,16 +10,11 @@
   transition: transform variables.$transition, box-shadow variables.$transition;
 
   &:hover {
-    opacity: 1;
     transform: translateY(-2px);
     box-shadow: 0 16px 40px rgb(38 31 26 / 14%);
 
     .image {
       transform: scale(1.04);
-    }
-
-    .link {
-      color: var(--accent-active);
     }
   }
 }
@@ -62,6 +57,13 @@
   font-size: 20px;
   line-height: 1.25;
   color: var(--brand-main);
+}
+
+.titleLink {
+  &:hover {
+    color: var(--accent-main);
+    opacity: 1;
+  }
 }
 
 .text {
@@ -109,12 +111,6 @@
   color: var(--accent-main);
 }
 
-.link {
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--accent-main);
-  transition: color variables.$transition;
+.cta {
+  margin-top: 12px;
 }

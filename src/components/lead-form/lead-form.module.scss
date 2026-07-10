@@ -72,21 +72,12 @@
   opacity: 0;
 }
 
-.consent {
-  font-size: 13px;
-  line-height: 1.4;
+.consentRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
-  a {
-    color: var(--accent-main);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  &[data-tone='light'] {
-    color: var(--dark-400);
-  }
-
-  &[data-tone='dark'] {
-    color: var(--light-400);
-  }
+.consentInvalid {
+  color: var(--critical);
 }

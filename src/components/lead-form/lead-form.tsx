@@ -4,9 +4,10 @@ import { FormEvent, useId, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CONTACT_CHANNELS } from '@/shared/data/site'
+import { reachGoal, type MetrikaGoal } from '@/shared/lib/metrika'
 import { isCompleteRuPhone } from '@/shared/lib/phone'
 import type { LeadChannel, LeadMode } from '@/shared/types/lead'
-import { Button, Dropdown, Input, PhoneInput, Textarea } from '@/ui'
+import { Button, Checkbox, Dropdown, Input, PhoneInput, Textarea } from '@/ui'
 import { submitLead } from '@api/lead'
 import { Paperclip } from '@phosphor-icons/react'
 
@@ -24,6 +25,12 @@ const channelOptions = CONTACT_CHANNELS.map((c) => ({
   value: c.value,
   label: c.label
 }))
+
+const goalByMode: Record<LeadMode, MetrikaGoal> = {
+  audit: 'lead_audit',
+  new: 'lead_calc',
+  contact: 'lead_contact'
+}
 
 const messageConfig: Record<
   Exclude<LeadMode, 'audit'>,
@@ -55,7 +62,9 @@ const LeadForm = ({
   const [channel, setChannel] = useState<LeadChannel | ''>('')
   const [message, setMessage] = useState('')
   const [fileName, setFileName] = useState('')
+  const [consent, setConsent] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
+  const [consentError, setConsentError] = useState(false)
   const [submitError, setSubmitError] = useState(false)
   const [submitting, setSubmitting] = useState(false)
 
@@ -71,6 +80,11 @@ const LeadForm = ({
       return
     }
 
+    if (!consent) {
+      setConsentError(true)
+      return
+    }
+
     setSubmitting(true)
     try {
       await submitLead({
@@ -83,6 +97,8 @@ const LeadForm = ({
         page: pathname,
         file: fileName || undefined
       })
+      reachGoal('lead_submit', { mode, source })
+      reachGoal(goalByMode[mode])
       onSuccess()
     } catch {
       setSubmitError(true)
@@ -178,6 +194,35 @@ const LeadForm = ({
         </div>
       )}
 
+      <div className={styles.consentRow}>
+        <Checkbox
+          tone={tone}
+          checked={consent}
+          aria-invalid={consentError}
+          className={consentError ? styles.consentInvalid : undefined}
+          onChange={(e) => {
+            setConsent(e.target.checked)
+            if (consentError) setConsentError(false)
+          }}
+        >
+          Я соглашаюсь с{' '}
+          <Link
+            href="/policy"
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            политикой конфиденциальности
+          </Link>{' '}
+          и обработкой персональных данных.
+        </Checkbox>
+        {consentError && (
+          <span className={styles.error}>
+            Отметьте согласие, чтобы отправить заявку
+          </span>
+        )}
+      </div>
+
       {submitError && (
         <p className={styles.submitError}>
           Не удалось отправить. Попробуйте ещё раз или напишите в мессенджер.
@@ -192,12 +237,6 @@ const LeadForm = ({
       >
         {submitting ? 'Отправляем…' : submitLabel}
       </Button>
-
-      <p className={styles.consent} data-tone={tone}>
-        Отправляя форму, вы соглашаетесь с{' '}
-        <Link href="/policy">политикой конфиденциальности</Link> и обработкой
-        персональных данных.
-      </p>
     </form>
   )
 }

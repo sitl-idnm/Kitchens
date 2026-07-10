@@ -42,6 +42,18 @@ const SiteFooter = () => {
           <span className={styles.address}>{company.address.display}</span>
         </div>
 
+        <div className={styles.map}>
+          <span className={styles.colTitle}>Мы на карте</span>
+          <div className={styles.mapFrame}>
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=37.987373%2C55.724728&mode=search&oid=32758711945&ol=biz&z=17.25"
+              title="Кухни 30 на Яндекс.Картах"
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
         <div className={styles.legal}>
           <p className={styles.legalLine}>
             © {company.copyrightYear} {SITE.name}. {company.legalName}

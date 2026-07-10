@@ -11,6 +11,7 @@
   grid-template-columns: 1.6fr 1fr 1fr;
   grid-template-areas:
     'brand nav contacts'
+    'map map map'
     'legal legal legal';
   gap: 48px 32px;
   padding-block: 64px;
@@ -20,6 +21,7 @@
     grid-template-areas:
       'brand brand'
       'nav contacts'
+      'map map'
       'legal legal';
     gap: 40px 24px;
     padding-block: 48px;
@@ -31,6 +33,7 @@
       'brand'
       'nav'
       'contacts'
+      'map'
       'legal';
     gap: 32px;
     padding-block: 40px;
@@ -94,6 +97,30 @@
   font-size: 16px;
   line-height: 1.4;
   color: var(--light-600);
+}
+
+.map {
+  grid-area: map;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mapFrame {
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  box-shadow: inset 0 0 0 1px var(--light-200);
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 0;
+
+    @include mixins.mobile {
+      height: 260px;
+    }
+  }
 }
 
 .legal {

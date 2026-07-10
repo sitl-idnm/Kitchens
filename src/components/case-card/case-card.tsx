@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { CaseStudy } from '@/shared/data/cases'
+import { Button } from '@/ui'
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
+import type { CaseStudy } from '@/shared/data/cases'
 
 import styles from './case-card.module.scss'
 
@@ -11,9 +12,11 @@ interface CaseCardProps {
 }
 
 const CaseCard = ({ data, priority }: CaseCardProps) => {
+  const href = `/cases/${data.slug}`
+
   return (
-    <Link href={`/cases/${data.slug}`} className={styles.root}>
-      <div className={styles.media}>
+    <article className={styles.root}>
+      <Link href={href} className={styles.media} aria-label={data.title}>
         <Image
           src={data.cover.src}
           alt={data.cover.alt}
@@ -26,10 +29,14 @@ const CaseCard = ({ data, priority }: CaseCardProps) => {
         <span className={styles.badge}>
           {data.area} · {data.kicker}
         </span>
-      </div>
+      </Link>
 
       <div className={styles.body}>
-        <h3 className={styles.title}>{data.title}</h3>
+        <h3 className={styles.title}>
+          <Link href={href} className={styles.titleLink}>
+            {data.title}
+          </Link>
+        </h3>
         <p className={styles.text}>{data.text}</p>
 
         <dl className={styles.metrics}>
@@ -47,12 +54,19 @@ const CaseCard = ({ data, priority }: CaseCardProps) => {
           </div>
         </dl>
 
-        <span className={styles.link}>
+        <Button
+          as="a"
+          isRouteLink
+          href={href}
+          variant="outline"
+          block
+          className={styles.cta}
+        >
           Открыть разбор
           <ArrowRight size={18} weight="bold" />
-        </span>
+        </Button>
       </div>
-    </Link>
+    </article>
   )
 }
 
