@@ -163,7 +163,8 @@ const CaseView = ({ data }: CaseViewProps) => {
               alt={data.gallery[active].alt}
               fill
               priority
-              sizes="(max-width: 900px) 100vw, 900px"
+              quality={90}
+              sizes="(max-width: 900px) 100vw, 1312px"
               className={styles.galleryImg}
             />
           </button>
@@ -184,7 +185,7 @@ const CaseView = ({ data }: CaseViewProps) => {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  sizes="120px"
+                  sizes="(max-width: 560px) 32vw, 180px"
                   className={styles.galleryImg}
                 />
               </button>
