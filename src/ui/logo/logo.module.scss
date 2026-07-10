@@ -5,6 +5,7 @@
   line-height: 1;
   letter-spacing: -0.01em;
   white-space: nowrap;
+  width: 160px;
 
   &_brand {
     color: var(--brand-main);
@@ -12,6 +13,10 @@
 
   &_light {
     color: var(--light-main);
+  }
+
+  img {
+    width: 100%;
   }
 }
 
