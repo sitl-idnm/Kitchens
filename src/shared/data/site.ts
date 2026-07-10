@@ -27,9 +27,9 @@ export type ContactChannel =
 // ⟨…⟩ placeholders — replace with the client's real data before launch.
 export const company = {
   phone: {
-    display: '+7 000 000-00-00',
-    href: 'tel:+70000000000',
-    placeholder: true
+    display: '+7 930 418-88-14',
+    href: 'tel:+79304188814',
+    placeholder: false
   },
   email: {
     display: 'hello@example.ru',
@@ -47,9 +47,9 @@ export const company = {
     placeholder: true
   },
   address: {
-    display: 'Москва, ул. …',
-    // by agreement: Ленинская Слобода, 19, БЦ «Омега Плаза», м. Автозаводская
-    placeholder: true
+    display:
+      'г. Москва, ул. Южнопортовая, д. 5, стр. 1, эт. 1, офис 116 (м. Кожуховская)',
+    placeholder: false
   },
   schedule: {
     display: 'Пн–Вс, 10:00–20:00',
