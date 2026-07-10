@@ -2,9 +2,16 @@
 
 ## Meta
 - **Type**: production landing (no Figma file — built from two handoffs)
+- **Repo**: https://github.com/sitl-idnm/Kitchens.git (branch `main`)
+- **Domain**: https://kitchens.kim-agency.ru
 - **Boilerplate**: https://github.com/pandaprofit/nextjs-boilerplate (Next 14, App Router, SCSS modules, Jotai)
 - **Started**: 2026-07-10
-- **Overall status**: ✅ Build green (14 routes), pending real client data
+- **Overall status**: ✅ Build green (14 routes), pushed; contact requisites still placeholders
+
+## Integrations (live)
+- **Leads → Telegram**: `/api/lead` posts to bot via `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` (in `.env.local`, gitignored; set on host in prod). Not verified with a live message.
+- **Analytics**: Yandex.Metrika `NEXT_PUBLIC_YM_ID=110557445` (`components/analytics`, SPA route-change hits). Policy §8 names Метрика.
+- Env template: `.env.example`.
 
 ## Source handoffs (reconciled)
 | Source | Used for |
@@ -74,8 +81,9 @@ Raw JPEGs in `/raw-assets` (gitignored). `yarn images:optimize` (sharp) → WebP
 1200×630 + apple-touch-icon generated. Case numbers are **demonstrative** (disclaimers present).
 
 ## ⏳ Client placeholders (edit only in `src/shared/data/site.ts`)
-Domain, phone, e-mail, Telegram, WhatsApp, showroom address, hours, legal entity/ИНН,
-copyright year, lead channel, analytics. JSON-LD omits placeholder contact fields until real.
+Still needed: phone, e-mail, Telegram, WhatsApp, showroom address, hours, legal
+entity/ИНН. (Domain, lead channel, analytics — done.) JSON-LD omits placeholder
+contact fields until real.
 
 ## Verification
 - `yarn build` ✓ (14 routes) · `yarn run check` ✓ (prettier+eslint+stylelint).
