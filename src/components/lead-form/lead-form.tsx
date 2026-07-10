@@ -32,6 +32,8 @@ const goalByMode: Record<LeadMode, MetrikaGoal> = {
   contact: 'lead_contact'
 }
 
+const MAX_FILE_BYTES = 10 * 1024 * 1024 // 10 MB
+
 const messageConfig: Record<
   Exclude<LeadMode, 'audit'>,
   { label: string; placeholder: string }
@@ -61,7 +63,8 @@ const LeadForm = ({
   const [phone, setPhone] = useState('')
   const [channel, setChannel] = useState<LeadChannel | ''>('')
   const [message, setMessage] = useState('')
-  const [fileName, setFileName] = useState('')
+  const [file, setFile] = useState<File | null>(null)
+  const [fileError, setFileError] = useState('')
   const [consent, setConsent] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
   const [consentError, setConsentError] = useState(false)
@@ -87,16 +90,19 @@ const LeadForm = ({
 
     setSubmitting(true)
     try {
-      await submitLead({
-        mode,
-        name: name.trim(),
-        phone: phone.trim(),
-        channel,
-        message: message.trim(),
-        source,
-        page: pathname,
-        file: fileName || undefined
-      })
+      await submitLead(
+        {
+          mode,
+          name: name.trim(),
+          phone: phone.trim(),
+          channel,
+          message: message.trim(),
+          source,
+          page: pathname,
+          file: file?.name
+        },
+        file
+      )
       reachGoal('lead_submit', { mode, source })
       reachGoal(goalByMode[mode])
       onSuccess()
@@ -178,19 +184,29 @@ const LeadForm = ({
           <label
             className={styles.file}
             data-tone={tone}
-            data-has-file={!!fileName}
+            data-has-file={!!file}
           >
             <Paperclip size={18} />
             <span className={styles.fileText}>
-              {fileName || 'Прикрепить файл (необязательно)'}
+              {file ? file.name : 'Прикрепить файл (необязательно)'}
             </span>
             <input
               type="file"
               className={styles.fileInput}
               accept="image/*,application/pdf"
-              onChange={(e) => setFileName(e.target.files?.[0]?.name ?? '')}
+              onChange={(e) => {
+                const picked = e.target.files?.[0] ?? null
+                if (picked && picked.size > MAX_FILE_BYTES) {
+                  setFileError('Файл больше 10 МБ — прикрепите поменьше')
+                  setFile(null)
+                  return
+                }
+                setFileError('')
+                setFile(picked)
+              }}
             />
           </label>
+          {fileError && <span className={styles.error}>{fileError}</span>}
         </div>
       )}
 

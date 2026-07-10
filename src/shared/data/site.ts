@@ -31,8 +31,8 @@ export const company = {
     placeholder: false
   },
   email: {
-    display: 'kitchens30@kim.agency',
-    href: 'mailto:kitchens30@kim.agency',
+    display: 'kitchens@kim.agency',
+    href: 'mailto:kitchens@kim.agency',
     placeholder: false
   },
   telegram: {
@@ -49,8 +49,24 @@ export const company = {
     display: 'Пн–Вс, 10:00–20:00',
     placeholder: true
   },
-  // Legal line (footer / policy)
-  legalName: 'ИП/ООО «…», ИНН …',
+  // Operator (personal-data controller) — ИП Мурзаев Б. И.
+  operator: {
+    name: 'Индивидуальный предприниматель Мурзаев Багаутдин Ибрагимович',
+    instrumental:
+      'индивидуальным предпринимателем Мурзаевым Багаутдином Ибрагимовичем',
+    short: 'ИП Мурзаев Б. И.',
+    inn: '057001361332',
+    ogrnip: '324050000053489'
+  },
+  // Bank / payment requisites
+  requisites: {
+    account: '40802 810 2 3800 0503399',
+    bankName: 'ПАО Сбербанк',
+    bik: '044525225',
+    corrAccount: '30101 810 4 0000 0000225'
+  },
+  // Legal line (footer)
+  legalName: 'ИП Мурзаев Б. И., ИНН 057001361332',
   copyrightYear: 2026,
   areaServed: 'Москва и Московская область'
 } as const

@@ -18,7 +18,10 @@ const PolicyView = () => {
             </section>
           ))}
 
-          <p className={styles.contacts}>{policy.contacts}</p>
+          <section className={styles.part}>
+            <h2 className={styles.heading}>{policy.requisitesTitle}</h2>
+            <p className={styles.requisites}>{policy.requisites}</p>
+          </section>
         </div>
       </Container>
     </main>
