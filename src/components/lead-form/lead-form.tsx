@@ -4,8 +4,9 @@ import { FormEvent, useId, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CONTACT_CHANNELS } from '@/shared/data/site'
+import { isCompleteRuPhone } from '@/shared/lib/phone'
 import type { LeadChannel, LeadMode } from '@/shared/types/lead'
-import { Button, Dropdown, Input, Textarea } from '@/ui'
+import { Button, Dropdown, Input, PhoneInput, Textarea } from '@/ui'
 import { submitLead } from '@api/lead'
 import { Paperclip } from '@phosphor-icons/react'
 
@@ -39,8 +40,6 @@ const messageConfig: Record<
   }
 }
 
-const isValidPhone = (phone: string) => phone.replace(/\D/g, '').length >= 10
-
 const LeadForm = ({
   mode,
   source,
@@ -67,7 +66,7 @@ const LeadForm = ({
     event.preventDefault()
     setSubmitError(false)
 
-    if (!isValidPhone(phone)) {
+    if (!isCompleteRuPhone(phone)) {
       setPhoneError(true)
       return
     }
@@ -112,19 +111,15 @@ const LeadForm = ({
         <label htmlFor={`${fieldId}-phone`} className={styles.label}>
           Телефон<span className={styles.required}>*</span>
         </label>
-        <Input
+        <PhoneInput
           id={`${fieldId}-phone`}
           name="phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          placeholder="+7 ___ ___-__-__"
           tone={tone}
           invalid={phoneError}
           aria-invalid={phoneError}
           value={phone}
-          onChange={(e) => {
-            setPhone(e.target.value)
+          onChange={(next) => {
+            setPhone(next)
             if (phoneError) setPhoneError(false)
           }}
         />
