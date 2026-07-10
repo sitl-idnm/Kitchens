@@ -12,10 +12,6 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 16px 40px rgb(38 31 26 / 14%);
-
-    .image {
-      transform: scale(1.04);
-    }
   }
 }
 
@@ -28,7 +24,6 @@
 
 .image {
   object-fit: cover;
-  transition: transform 0.4s ease;
 }
 
 .badge {

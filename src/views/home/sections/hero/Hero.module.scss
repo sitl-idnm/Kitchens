@@ -300,9 +300,27 @@
 
 /* ---- Ticker ---- */
 .ticker {
+  position: relative;
   overflow: hidden;
   border-top: 1px solid var(--brand-100);
   border-bottom: 1px solid var(--brand-100);
+  backdrop-filter: blur(6px);
+
+  // fade the strip at both edges so items don't pop in/out abruptly
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
 }
 
 .tickerTrack {
